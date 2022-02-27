@@ -42,3 +42,6 @@ To view the web application please follow this link:
 http://dkrutye.pythonanywhere.com/
 
 Username : admin, Password: admin
+
+
+The application does not currently support mobile browsing but this feature will be implemented in the near future. 
