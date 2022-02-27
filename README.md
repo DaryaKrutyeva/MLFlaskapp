@@ -43,5 +43,7 @@ http://dkrutye.pythonanywhere.com/
 
 Username : admin, Password: admin
 
+To run the application from a local machine please have python 3.9 installed and install the corresponding libraries in the requirements file, then run run.py. 
+
 
 The application does not currently support mobile browsing but this feature will be implemented in the near future. 
