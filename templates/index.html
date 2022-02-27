@@ -1,0 +1,387 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class = "site-header-logo">
+        <h1 class = "text-center">
+            Fetal Health Dataset Visualization
+        </h1>
+    
+
+
+    </div>
+   
+    <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-secondary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Histograms for Data Exploration
+              </button>
+            </h5>
+          </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <div class="container-md">
+                    <p class="text-center">We have provided the following histograms to allow you to explore the data distributions on the original data set and make your own inferrals during initial exploration of the data. For future improvements of the machine learning algorithm, these figures will be useful in determining outliers and gaps in data to account for. Each histogram will include a distribution summary to aid in analysis.</p>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart1"></di>
+                            <p class="text-center">
+                                This histogram shows the distribution of fetal heartrate across the sample. The bell curve of data represents a normal distribution. There is an unaccounted for gap in data between 106 and 110 BPM, for which data needs to be collected. 
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart2"></di>
+                            <p class="text-center">
+                             This histogram shows the number of fetal heart rate accelerations per second across the sample. This is a left skewed distribution, with most fetuses having no accelerations.
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart3"></di>
+                            <p class="text-center">
+                                This histogram shows the number of fetal movements per second across the sample. This is a left skewed distribution, with most of the sample having no fetal movement. There are a few gaps in this data that should be accounted for when collecting further data.
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart4"></di>
+                            <p class="text-center">
+                                This histogram shows the number of uterine contractions per second across the sample. This is a bimodal histogram, with most uterine contractions being 0, but many being .0005. Bimodal histograms suggest that this data should be split and analyzed seperately in future iterations of the machine learning model.
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart5"></di>
+                            <p class="text-center">
+                                This histogram shows the number of light fetal heart rate decelerations per second across the sample. This is a left skewed histogram, with no gaps in data. Most of the sample experiences no light decelerations. 
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart6"></di>
+                            <p class="text-center">
+                                This histogram show the number of severe fetal heart rate decelerations per second. This is a bimodal distribution, with most of the sample experiencing no severe decelerations, but 7 females experiencing some. The bimodal distrbution suggests that this data should be split and analyzed seperately in future iterations of the machine learning model.
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart7"></di>
+                            <p class="text-center">
+                                This histogram shows the number of prolongued fetal heart rate decelerations per second. This is a left skewed distribution with most of our sample experiencingno such decelerations. There are no gaps in data.
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart8"></di>
+                            <p class="text-center">
+                                This histogram shows the percentage of time spent with abnormal short term fetal heart rate variability. This is a random distribution, suggesting that the data can be split and analyzed seperately for further analysis in future iterations of the machine learning model.
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart9"></di>
+                            <p class="text-center">
+                                This histogram shows the distribution of the mean value of short term variability across the sample. This is a left skewed distrbution, with most of the sample falling between 1 and 1.5. There are a few gaps in data when approaching higher values, with a possible outlier around 7 that could be removed in future iterations of the machine learning model.
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart10"></di>
+                            <p class="text-center">
+                                This histogram shows the percantage of time with abnormal long term variability across the sample. This is a left skewed distrbution, with most of the patients having had no long term variability. 
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart11"></di>
+                            <p class="text-center">
+                                This histogram shows the mean value of long term variability across the sample. The distribution is bimodal, with some of the sample being between 0-0.9 and some of the sample being between 6-7.9. This distribution suggests that this data could be split and analyzed seperately in future iterations of the machine learning model. 
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                
+                
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseThree">
+                    Graphs for Data Correlation
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <div class="container-md">
+                    <p class="text-center">We have provided the following graphs to aid in initial data analysis and comparison. The variables chosen for the first three graphs were taken from feature importances generated by the machine learning algorithm, features that had the greatest affect on the classification fetal health. These variables were then plotted against each other to see if there is any correlation. A correlation matrix is also included to view the overall correlation between each medical parameter. </p>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart21"></di>
+                            <p class="text-center">
+                                This 3D scatter plot compares abnormal short term variability, abnormal long term variability, and mean value of short term fetal heart rate variability. The graph suggests that patients with higher percentage of time with abnoraml variability, lower mean value of short term variability, and lower abnormal long term variability are more likely to have pathological fetal health. 
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart22"></di>
+                            <p class="text-center">
+                                This scatter plot compares the fetal heart rate histogram median and the number of fetal heart rate accelerations per second. The data suggests that fetuses with lower median heart rate and fewer accelerations are generally classified as pathological. 
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart23"></di>
+                            <p class="text-center">
+                                This scatter plot compares number of fetal movements per second to number of uterine contractions per second. The data suggests that patients with higher movement but fewer uterine contractions are more likely to be classified as pathological. The opposite is true as well. 
+                            </p>
+                        </div>
+                    
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di> <img src='../static/corrmatrix.png' width="800" height="800"/>
+                            </di>
+                            <p class="text-center">
+                                This correlation matrix compares each of the medical parameters in our initial dataset. 
+                                The following legend represents each of the axis numbers:
+                                <p>1.'baseline value'- FHR baseline (beats per minute)</p>
+                                <p>2.'accelerations'- Number of accelerations per second</p>
+                                <p>3.'fetal_movement'- Number of fetal movements per second </p>
+                                <p>4.'uterine_contractions'- Number of uterine contractions per second</p>
+                                <p>5.'light_decelerations'- Number of light decelerations per second</p>
+                                <p>6.'severe_decelerations'- Number of severe decelerations per second</p>
+                                <p>7.'prolongued_decelerations'- Number of prolonged decelerations per second</p>
+                                <p>8.'abnormal_short_term_variability'- Percentage of time with abnormal short term variability</p>
+                                <p>9.'mean_value_of_short_term_variability'- Mean value of short term variability</p>
+                                <p>10.'percentage_of_time_with_abnormal_long_term_variability'- Percentage of time with abnormal long term variability</p>
+                                <p>11.'mean_value_of_long_term_variability'- Mean value of long term variability</p>
+                                <p>12.'histogram_width'- Width of FHR histogram</p>
+                                <p>13.'histogram_min'- Minimum (low frequency) of FHR histogram</p>
+                                <p>14.'histogram_max'- Maximum (high frequency) of FHR histogram</p>
+                                <p>15.'histogram_number_of_peaks'- Number of histogram peaks</p>
+                                <p>16.'histogram_number_of_zeroes'- Number of histogram zeros</p>
+                                <p>17.'histogram_mode'- Histogram mode</p>
+                                <p>18.'histogram_mean'- Histogram mean</p>
+                                <p>19.'histogram_median'- Histogram median</p>
+                                <p>20.'histogram_variance'- Histogram variance</p>
+                                <p>21.'histogram_tendency'- Histogram tendency</p>
+                                <p>22.'fetal_health': fetal health</p>
+
+                             </p>
+                        </div>
+                    
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Algorithm Analysis
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <div class="container-md">
+                    <p class="text-center"> We have provided the following diagrams to aid in understanding the effectiveness of the chosen algorithm. We have included data comparing multiple algorithms as well as the accuracy matrix of the implemented algorithm. Additionally, you will be able to see how the chosen algorithm initially tested on our data and the final results when used on the rest of the data.</p>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart24"></di>
+                            <p class="text-center">
+                                This bar graph compares the three different classification algorithms we have tested on the data and the corresponding accuracies for each one. The Random Forest algorithm provided the highest accuracy score.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di"> <img src= '../static/confusion.png'/></di>
+                            <p class="text-center">
+                                This confusion matrix represents the positives, negatives, false positives and false negatives of the results by the Random Forest classification model after tuning.
+                                The following pairs match the given definitions:
+                            </p>
+                            <p> (0,0) - model predicted a healthy fetus, and the fetus is healthy </p>
+                            <p> (0,1) - model predicted a healthy fetus, but the health is suspect </p>
+                            <p> (0,2) - model predicted a healthy fetus, but the health is pathological</p>
+                            <p> (1,0) - model predicted suspect health, but the fetus is healthy</p>
+                            <p> (1,1) - model predicted suspect health, and the health is suspect</p>
+                            <p> (1,2) - model predicted suspect health, and the health is pathological</p>
+                            <p> (2,0) - model predicted pathological health, but the fetus is healthy</p>
+                            <p> (2,1) - model predicted pathological health, but the health is suspect</p>
+                            <p> (2,2) - model predicted pathological health, and the health is pathological</p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart25"></di>
+                            <p class="text-center">
+                                This bar chart allows for comparison of scores on the test data set and scores on the total data. Accuracy represents the correctly predicted health classifications to the total observations. Precision is the correctly predicted positive observations, to total predicted positive observations. Recall is the proportion of positive classifications identified correctly (true positives as a ration of true positives and false negatives), and f1 score is the weighted average of precision and recall.  
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "row p-4"> 
+                    <div class = "card m-auto" style = "width: 90%;"> 
+                        <div class = ".card-body">
+                            <di id = "chart26"></di>
+                            <p class="text-center">
+                                This bar graph represents the medical variables that had the highest effect on the classification of fetal health for the implemented model. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--plotly CDN-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js">
+
+    </script>
+    <script>
+        var graph1 = {{ hist1JSON | safe}}
+        Plotly.plot("chart1", graph1, {})
+    </script>
+    <script>
+        var graph2 = {{ hist2JSON | safe}}
+        Plotly.plot("chart2", graph2, {})
+    </script>
+    <script>
+        var graph3 = {{ hist3JSON | safe}}
+        Plotly.plot("chart3", graph3, {})
+    </script>
+    <script>
+        var graph4 = {{ hist4JSON | safe}}
+        Plotly.plot("chart4", graph4, {})
+    </script>
+    <script>
+        var graph5 = {{ hist5JSON | safe}}
+        Plotly.plot("chart5", graph5, {})
+    </script>
+    <script>
+        var graph6 = {{ hist6JSON | safe}}
+        Plotly.plot("chart6", graph6, {})
+    </script>
+    <script>
+        var graph7 = {{ hist7JSON | safe}}
+        Plotly.plot("chart7", graph7, {})
+    </script>
+    <script>
+        var graph8 = {{ hist8JSON | safe}}
+        Plotly.plot("chart8", graph8, {})
+    </script>
+    <script>
+        var graph9 = {{ hist9JSON | safe}}
+        Plotly.plot("chart9", graph9, {})
+    </script>
+    <script>
+        var graph10 = {{ hist10JSON | safe}}
+        Plotly.plot("chart10", graph10, {})
+    </script>
+    <script>
+        var graph11 = {{ hist11JSON | safe}}
+        Plotly.plot("chart11", graph11, {})
+    </script>
+    
+    <script>
+        var graph21 = {{ scatterJSON | safe}}
+        Plotly.plot("chart21", graph21, {})
+    </script>
+    <script>
+        var graph22 = {{scatter2JSON | safe}}
+        Plotly.plot("chart22", graph22, {})
+    </script>
+    <script>
+        var graph23 = {{scatter3JSON | safe}}
+        Plotly.plot("chart23", graph23, {})
+    </script>
+    <script>
+        var graph24 = {{modelbarJSON | safe}}
+        Plotly.plot("chart24", graph24, {})
+    </script>
+    <script>
+        var graph25 = {{originalbarJSON | safe}}
+        Plotly.plot("chart25", graph25, {})
+    </script>
+    <script>
+        var graph26 = {{importancebarJSON | safe}}
+        Plotly.plot("chart26", graph26, {})
+    </script>
+
+
+
+
+
+
+    
+{% endblock %}

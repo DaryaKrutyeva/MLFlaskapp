@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+        crossorigin="anonymous">
+
+     <link rel = "stylesheet" href = "{{url_for('static', filename = 'analyze.css')}}" type = "text/css">   
+    {% if title %}
+        <title>FetalHealth-{{title}}</title>
+    {% else %}
+        <title>Document</title>
+    {% endif %} 
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-white bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{ url_for('index')}}">Fetal Health Analysis</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link text-secondary" href="{{ url_for('index')}}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary" href="{{ url_for('analyze')}}">Analyze</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-secondary" href="{{ url_for('jupyter')}}">Jupyter Notebook</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+
+
+    <main>
+        <div class = container-lg> 
+            <h4 class="text-center">Please enter the patient's following medical parameters</h4>
+            <h5 class = "text-center"> This data will be kept confidential </h5>
+            <p class = "text-center"> This form will allow you to analyze your patient's fetal health</p>
+            <div class = "row p-4 "> 
+                <div class = "card-lg m-auto" style = "width: 30%;"> 
+                  <img class="card-img-top" src="/static/baby.png" alt= "image of a baby">
+                    <div class = ".card-body">
+                        <form action="{{ url_for('predict')}}"method="post">
+                        <input type="int" name="baseline_value" style = "width: 100%" placeholder="Baseline Fetal Heart Rate" required="required" />
+                        <input type="text" name="accelerations" style = "width: 100%" placeholder="Number of accelerations per second" required="required" />
+                        <input type="text" name="fetal_movement" style = "width: 100%" placeholder="Number of fetal movements per second" required="required" />
+                        <input type="text" name="uterine_contractions" style = "width: 100%" placeholder="Number of uterine contractions per second" required="required" />
+                        <input type="text" name="light_decelerations" style = "width: 100%" placeholder="Number of light decelerations per second" required="required" />
+                        <input type="text" name="severe_decelerations" style = "width: 100%" placeholder="Number of severe decelerations per second" required="required" />
+                        <input type="text" name="prolongued_decelerations" style = "width: 100%" placeholder="Number of prolongued decelerations per second" required="required" />
+                        <input type="text" name="abnormal_short_term_variability" style = "width: 100%" placeholder="Percentage of time with abnormal short term variability" required="required" />
+                        <input type="text" name="mean_value_of_short_term_variability" style = "width: 100%" placeholder="Mean value of short term variability" required="required" />
+                        <input type="text" name="percentage_of_time_with_abnormal_long_term_variability" style = "width: 100%" placeholder=" Percentage of time with abnormal long term variability" required="required" />
+                        <input type="text" name="mean_value_of_long_term_variability" placeholder="Mean value of long term variability" style = "width: 100%" required="required" />
+                        <input type="text" name="histogram_width" placeholder="Width of the histogram" style = "width: 100%" required="required" />
+                        <input type="text" name="histogram_min" style = "width: 100%" placeholder="Histogram minimum value" required="required" />
+                        <input type="text" name="histogram_max" style = "width: 100%" placeholder="Histogram maximum value" required="required" />
+                        <input type="text" name="histogram_number_of_peaks" style = "width: 100%" placeholder="Number of peaks in histogram" required="required" />
+                        <input type="text" name="histogram_number_of_zeroes" style = "width: 100%" placeholder="Number of zeroes in histogram" required="required" />
+                        <input type="text" name="histogram_mode" style = "width: 100%" placeholder="Histogram mode" required="required" />
+                        <input type="text" name="histogram_mean" style = "width: 100%" placeholder="Histogram mean" required="required" />
+                        <input type="text" name="histogram_median" style = "width: 100%" placeholder="Histogram median" required="required" />
+                        <input type="text" name="histogram_variance" style = "width: 100%" placeholder="Histogram variance" required="required" />
+                        <input type="text" name="histogram_tendency" style = "width: 100%" placeholder="Histogram trend" required="required" />
+        
+                        <button type="submit" class="btn btn-primary btn-block btn-large">Classify</button>
+                        </form>
+                    </div>
+                </div>
+            </div>        
+            <div class = "row p-4 "> 
+                <div class = "card-sm m-auto" style = "width: 30%;"> 
+                    <div class = "card-body">
+                        <h4 class="card-header text-center"> {{ prediction_text }} </h4>
+                        <div id="accordion">
+                            <div class="card">
+                              <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-secondary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    What does this mean?
+                                  </button>
+                                </h5>
+                              </div>
+                          
+                              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                <p> (1) means the baby is healthy</p>
+                                <p> (2) means the baby's health is suspect, and additional analysis is recommended</p>
+                                <p> (3) means the baby's health is pathological, and additional analysis and intervention is needed</p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+             
+        
+        
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

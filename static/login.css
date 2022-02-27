@@ -1,0 +1,92 @@
+
+
+@font-face {
+    font-family: "Rubik_Bold";
+    src: url("./fonts/Rubik-Bold.woff") format("woff"),
+      url("./fonts/Rubik-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Rubik_Regular";
+    src: url("./fonts/Rubik-Regular.woff") format("woff"),
+      url("./fonts/Rubik-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+  *{  
+      padding: 0px;
+      margin: 0;
+      font-family: Rubik_Regular;
+  }
+
+  .navbar-text{
+      color:white
+  }
+
+  .navbar {
+      background-color: rgb(231, 111, 81)!important;
+      font-size: 2rem;
+  }
+
+  .navbar-brand{
+    color: white;
+    
+    font-family: Rubik-Regular;
+    font-size: 2rem;
+  }
+  .navbar-brand:hover{
+      color:white;
+      font-family: Rubik-Regular;
+  }
+  .site-header-logo h1{
+      color: white;
+      background-color:rgb(42, 157, 143);
+      font-family: Rubik-Regular;
+      font-size: 2rem;
+      margin-top: 2rem;
+
+  }
+  .btn{
+    color: white;
+    background-color: rgb(42, 157, 143)!important;
+    font-family: Rubik-Regular;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    border-radius: 10px;
+    border-color: whitesmoke;
+    border-width: 2px;
+
+  }
+  .card{
+      background-color: rgb(244, 162, 97)!important;
+      border-color: rgb(42, 157, 143);
+      border-radius: 40px;
+      border-width: 3px;
+  }
+
+  .card-header{
+    background-color: rgb(42, 157, 143)!important;
+    color: white;
+  }
+  body {
+      background-color: rgb(38, 70, 83)! important;
+      color: white;
+    
+  }
+
+  .container-sm {
+      margin: 50px;
+  }
+
+  .form-group {
+      margin: 20px;
+      margin-top: 30px;
+  }
+  
+  .card-img-top {
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+
+  }
